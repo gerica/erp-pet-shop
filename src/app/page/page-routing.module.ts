@@ -1,7 +1,6 @@
 import { Route } from '@angular/router';
 import { FormacaoRoutes } from './formacao/formacao-routing.module';
 import { AreaAplicacaoRoutes } from './areaAplicacao/area.aplicacao-routing.module';
-import { ProjetoConveniadoRoutes } from './conveniado/conveniado-routing.module';
 import { InstituicaoRoutes } from './instituicao/instituicao-routing.module';
 import { DashboardRoutes } from './dashboard/dashboard-routing.module';
 import { PageComponent } from './page.component';
@@ -15,8 +14,7 @@ export const PageRoutes: Route[] = [
     children: [
       ...ClienteRoutes,
       ...FormacaoRoutes,
-      ...AreaAplicacaoRoutes,
-      ...ProjetoConveniadoRoutes,
+      ...AreaAplicacaoRoutes,      
       ...InstituicaoRoutes,
       ...DashboardRoutes,
     ],

@@ -3,7 +3,6 @@ import { PageComponent } from './page.component';
 import { FormacaoModule } from './formacao/formacao.module';
 import { DeleteDialogComponent } from './shared/utils/modal/delete/delete.dialog.component';
 import { AreaAplicacaoModule } from './areaAplicacao/area.aplicacao.module';
-import { ProjetoConveniadoModule } from './conveniado/conveniado.module';
 import { InstituicaoModule } from './instituicao/instituicao.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { SharedModule } from './shared/shared.module';
@@ -18,7 +17,6 @@ import { ClienteModule } from './cliente/cliente.module';
     ClienteModule,
     FormacaoModule,
     AreaAplicacaoModule,
-    ProjetoConveniadoModule,
     InstituicaoModule,
     DashboardModule,
   ],

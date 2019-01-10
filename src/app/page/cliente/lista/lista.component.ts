@@ -43,7 +43,12 @@ export class ListaComponent extends BaseComponent implements OnInit {
   entity: any;
   idEntity = 'id';
   entities: MatTableDataSource<any>;
-  displayedColumns: string[] = ['NRNome', 'actions'];
+  displayedColumns: string[] = [
+    'NRNome',
+    'DTNascimento',
+    'NRTelefone',
+    'actions',
+  ];
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   @Input() templateRef: TemplateRef<any>;
@@ -100,7 +105,7 @@ export class ListaComponent extends BaseComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result && result.delete) {
-        this.baseService.apagar(MODULE_CLIENTE, row.idCliente);
+        this.baseService.apagar(MODULE_CLIENTE, row[this.idEntity]);
       }
     });
   }

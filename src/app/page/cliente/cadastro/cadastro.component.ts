@@ -66,11 +66,11 @@ export class CadastroComponent extends BaseComponent
   }
 
   fetchById(id: any): any {
-    console.log(id);
     this.baseService.buscarPorId(MODULE_CLIENTE, id).subscribe(
       onNext => {
         if (onNext && onNext.length > 0) {
           this.entity = onNext[0];
+          this.entity.DTNascimento = onNext[0].DTNascimento.toDate();
         }
       },
       onError => {

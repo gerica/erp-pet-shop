@@ -20,9 +20,11 @@ export class BaseService {
 
   salvar(objModule: any, entity: any): Promise<void> {
     this.fireCollection = this.afs.collection<any>(objModule.name);
-    const id = this.afs.createId();
-    entity.id = id;
-    return this.fireCollection.doc(id).set(entity);
+    if (!entity.id) {
+      const id = this.afs.createId();
+      entity.id = id;
+    }
+    return this.fireCollection.doc(entity.id).set(entity);
   }
 
   apagar(objModule: any, id: any): Promise<void> {

@@ -7,7 +7,6 @@ export const environment = {
   urlApp: 'http://localhost:8080',
   urlBase: 'http://localhost:8080/base',
   moduleCliente: { name: 'cliente' },
-  moduleProjetoConveniado: { name: 'ProjetoConveniado' },
   moduleTipoProjeto: { name: 'TipoProjeto' },
   moduleProjetoDispendio: { name: 'ProjetoDispendio' },
   moduleFormacao: { name: 'Formacao', id: 'CDFormacao' },
