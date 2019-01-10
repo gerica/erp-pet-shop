@@ -5,10 +5,9 @@ import { paths } from './app-paths';
 @Component({
   selector: 'app-page',
   templateUrl: './page.component.html',
-  styleUrls: ['./page.component.scss']
+  styleUrls: ['./page.component.scss'],
 })
 export class PageComponent implements OnInit {
-
   title = 'SEPIN';
   currentRouter: string;
   menus: any[] = [
@@ -16,14 +15,11 @@ export class PageComponent implements OnInit {
       icon: 'dashboard',
       name: 'Painel de Instrumentos',
       router: `/${paths.page}/${paths.dashboard}`,
-    }, {
-      icon: 'business_center',
-      name: 'Projeto Próprio',
-      router: `/${paths.page}/${paths.projeto}`,
-    }, {
-      icon: 'loyalty',
-      name: 'Projeto Conveniado',
-      router: `/${paths.page}/${paths.conveniado}`,
+    },
+    {
+      icon: 'person',
+      name: 'Cliente',
+      router: `/${paths.page}/${paths.cliente}`,
     },
     {
       icon: 'account_balance',
@@ -41,15 +37,14 @@ export class PageComponent implements OnInit {
         {
           name: 'Instituição',
           router: `/${paths.page}/${paths.instituicao}`,
-        }
+        },
       ],
     },
   ];
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   goPage(route: string, item: any) {
     this.currentRouter = route;
@@ -80,5 +75,4 @@ export class PageComponent implements OnInit {
   setRoute(route: any): void {
     this.currentRouter = route;
   }
-
 }

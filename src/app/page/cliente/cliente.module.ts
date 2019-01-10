@@ -31,4 +31,4 @@ import { DialogPropriedadeIntelectualComponent } from '../propriedadeIntelectual
   ],
   providers: []
 })
-export class ProjetoModule { }
+export class ClienteModule { }

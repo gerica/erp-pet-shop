@@ -3,9 +3,9 @@ import { ListaComponent } from './lista/lista.component';
 import { CadastroComponent } from './cadastro/cadastro.component';
 import { paths } from '../app-paths';
 
-export const ProjetoRoutes: Route[] = [
+export const ClienteRoutes: Route[] = [
   {
-    path: paths.projeto,
+    path: paths.cliente,
     children: [
       {
         path: '',
@@ -15,10 +15,11 @@ export const ProjetoRoutes: Route[] = [
       {
         path: 'cadastro',
         component: CadastroComponent,
-      }, {
+      },
+      {
         path: 'cadastro/:id',
         component: CadastroComponent,
       },
-    ]
+    ],
   },
 ];
