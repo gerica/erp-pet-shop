@@ -1,0 +1,32 @@
+// @import '~@angular/material/theming';
+@import '../node_modules/@angular/material/theming';
+@include mat-core();
+
+$custom-theme-primary: mat-palette($mat-teal);
+$custom-theme-accent: mat-palette($mat-blue-grey, A200, A100, A400);
+$custom-theme-warn: mat-palette($mat-red);
+
+$custom-theme: mat-light-theme($custom-theme-primary, $custom-theme-accent, $custom-theme-warn);
+
+
+// Create your Sass color vars (will be available in all the project)
+$primary: mat-color($custom-theme-primary);
+$accent: mat-color($custom-theme-accent);
+$warn: mat-color($custom-theme-warn);
+
+@include angular-material-theme($custom-theme);
+
+// ALTERNATIVE THEME
+
+$login-primary: mat-palette($mat-yellow);
+$login-accent: mat-palette($mat-grey, 200);
+$login-theme: mat-dark-theme($login-primary, $login-accent);
+
+.login-theme {
+  @include angular-material-theme($login-theme);
+}
+
+// TO
+// .alternative {
+//     @include mat-button-theme($alt-theme);
+// }

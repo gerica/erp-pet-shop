@@ -1,0 +1,85 @@
+<mat-card class="app-card">
+  <mat-card-header>
+    <mat-card-title>Projeto Próprio</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form class="app-form">
+      <!-- <mat-form-field style="width: 20%; padding-left: 0.5em;">
+        <input matInput placeholder="Identificação" name="identificacao" [(ngModel)]="entity.identificacao">
+      </mat-form-field>
+      <mat-form-field style="width: 20%; padding-left: 0.5em;">
+        <input matInput placeholder="Sigla" name="sigla" [(ngModel)]="entity.sigla">
+      </mat-form-field>
+      <mat-form-field style="width: 55%; padding-left: 0.5em;">
+        <input matInput placeholder="Nome" name="nome" [(ngModel)]="entity.nome">
+      </mat-form-field> -->
+      <mat-form-field style="width: 99%; padding-left: 0.5em;">
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filtro">
+      </mat-form-field>
+    </form>
+  </mat-card-content>
+  <mat-card-actions>
+    <div class="app-button-row">
+      <!-- <button mat-raised-button (click)="consultar()">Consultar</button> -->
+      <button mat-raised-button (click)="incluir()" color="primary">Incluir</button>
+    </div>
+  </mat-card-actions>
+
+  <mat-divider></mat-divider>
+  <div class="mat-elevation-z8" style="margin-top: 3%">
+    <table mat-table [dataSource]="entities" matSort>
+
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef> Ações </th>
+        <td mat-cell *matCellDef="let row; let i=index;">
+          <button mat-icon-button color="primary" (click)="preEdit(row)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button color="warn" (click)="deleteRow(row)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <!-- <ng-container matColumnDef="IDProjeto">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> ID Projeot </th>
+        <td mat-cell *matCellDef="let element"> {{element.IDProjeto}} </td>
+      </ng-container> -->
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="IDProjeto">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Identificação </th>
+        <td mat-cell *matCellDef="let element"> {{element.IDProjeto}} </td>
+      </ng-container>
+
+      <!-- <ng-container matColumnDef="NRSigla">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Sigla </th>
+        <td mat-cell *matCellDef="let element"> {{element.NRSigla}} </td>
+      </ng-container> -->
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="NRNome">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Nome </th>
+        <td mat-cell *matCellDef="let element"> {{element.NRNome}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="NOTipoProjeto">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Tipo </th>
+        <td mat-cell *matCellDef="let element"> {{element.NOTipoProjeto}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="DTInicioDTFim">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Período de Vigência </th>
+        <td mat-cell *matCellDef="let element">
+          {{element.DTInicio | date:'dd/MM/yyyy'}} até {{element.DTFim | date:'dd/MM/yyyy'}}
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+  </div>
+
+</mat-card>
