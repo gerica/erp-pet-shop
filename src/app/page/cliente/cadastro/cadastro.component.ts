@@ -48,6 +48,7 @@ export class CadastroComponent extends BaseComponent
 
   activeForm = true;
   entity: any;
+  entityPet: any;
   entities: any[];
   msgObrigatorio = AppMessages.getObj(MSG001);
   especies: any;
@@ -67,6 +68,7 @@ export class CadastroComponent extends BaseComponent
 
   ngOnInit() {
     this.entity = {};
+    this.entityPet = {};
     this.subscription = this.actionRoute.params.subscribe(params => {
       if (params && params['id']) {
         this.fetchById(params['id']);

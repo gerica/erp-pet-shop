@@ -1,23 +1,25 @@
 .containerProjeto {
-    max-width: 100%;
-    margin: 0.5em;
+  max-width: 100%;
+  margin: 0.5em;
 }
 
-.cardProjeto{
+.cardProjeto {
   margin-bottom: 10px;
 }
 
-.app-button-row{
+.app-button-row {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
+  padding-bottom: 1%;
+  padding-top: 1%;
 }
 
-.app-button-row button{  
+.app-button-row button {
   margin-right: 8px;
 }
 
-.app-form {  
+.app-form {
   width: 100%;
   // border: 1px solid black;
 }
