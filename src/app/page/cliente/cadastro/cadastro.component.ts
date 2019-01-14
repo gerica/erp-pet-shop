@@ -17,7 +17,15 @@ import { SepinService } from 'src/app/page/shared/utils/service/sepin.service';
 import { environment } from 'src/environments/environment';
 import * as moment from 'moment';
 import { NgForm, NgModel } from '@angular/forms';
-import { map, find, tap, filter, mergeMap, switchMap } from 'rxjs/operators';
+import {
+  map,
+  find,
+  tap,
+  filter,
+  mergeMap,
+  switchMap,
+  first,
+} from 'rxjs/operators';
 import { MatDialog, MatStepper } from '@angular/material';
 import { DialogRecursoHumanoComponent } from '../../dispendio/recurso-humano/dialog.recurso.humano.component';
 import { DialogEquipamentoSoftwareComponent } from '../../dispendio/equipamento-software/dialog.equipamento.software.component';
@@ -25,6 +33,8 @@ import { DialogPropriedadeIntelectualComponent } from '../../propriedadeIntelect
 import { paths } from '../../app-paths';
 
 const MODULE_CLIENTE = environment.moduleCliente;
+const MODULE_ESPECIE = environment.moduleEspecie;
+const MODULE_RACA = environment.moduleRaca;
 const URL_PROJETO = `${paths.page}/${paths.cliente}`;
 
 @Component({
@@ -40,6 +50,9 @@ export class CadastroComponent extends BaseComponent
   entity: any;
   entities: any[];
   msgObrigatorio = AppMessages.getObj(MSG001);
+  especies: any;
+  racas: any;
+  downloadURL: any;
 
   constructor(
     private router: Router,
@@ -66,12 +79,14 @@ export class CadastroComponent extends BaseComponent
   }
 
   fetchById(id: any): any {
-    this.baseService.buscarPorId(MODULE_CLIENTE, id).subscribe(
+    const sub$ = this.baseService.buscarPorId(MODULE_CLIENTE, id);
+    sub$.pipe(first()).subscribe(
       onNext => {
         if (onNext && onNext.length > 0) {
           this.entity = onNext[0];
           this.entity.DTNascimento = onNext[0].DTNascimento.toDate();
         }
+        // sub$.unsubscribe();
       },
       onError => {
         if (onError.error) {
@@ -81,6 +96,12 @@ export class CadastroComponent extends BaseComponent
         } else {
           this.addSnackBar(AppMessages.getObj(MSG101));
         }
+      },
+      () => {
+        const especies$ = this.baseService.buscarTodos(MODULE_ESPECIE);
+        especies$.pipe(first()).subscribe(onNext => {
+          this.especies = onNext;
+        });
       },
     );
   }
@@ -102,6 +123,30 @@ export class CadastroComponent extends BaseComponent
     this.baseService
       .salvar(MODULE_CLIENTE, this.entity)
       .then(() => this.routerConsulta());
+  }
+
+  onChangeEspecie(event: any): void {
+    const temp$ = this.baseService.buscarPorQuery(MODULE_RACA, ref =>
+      ref.where('IDEspecie', '==', event.id),
+    );
+
+    temp$.pipe(first()).subscribe(onNext => {
+      this.racas = onNext;
+      this.racas.sort((a, b) => {
+        if (a.NRNome > b.NRNome) {
+          return 1;
+        }
+        if (a.NRNome < b.NRNome) {
+          return -1;
+        }
+        // a must be equal to b
+        return 0;
+      });
+    });
+  }
+
+  onChangeRaca(event: any): void {
+    this.downloadURL = this.baseService.downloadFile(event.PAFile);
   }
 
   initForDevelop() {

@@ -4,14 +4,16 @@ import {
 } from '@angular/fire/firestore';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { environment } from 'src/environments/environment';
+import { AngularFireStorage } from '@angular/fire/storage';
 
-const URL_BASE = environment.urlBase;
-const SAVE_RETURN_ID = `${URL_BASE}/saveAndReturnId`;
 @Injectable({ providedIn: 'root' })
 export class BaseService {
   private fireCollection: AngularFirestoreCollection<any>;
-  constructor(private readonly afs: AngularFirestore) {}
+
+  constructor(
+    private readonly afs: AngularFirestore,
+    private storage: AngularFireStorage,
+  ) {}
 
   buscarTodos(objModule: any): Observable<any> {
     this.fireCollection = this.afs.collection<any>(objModule.name);
@@ -36,5 +38,14 @@ export class BaseService {
     return this.afs
       .collection<any>(objModule.name, ref => ref.where('id', '==', id))
       .valueChanges();
+  }
+
+  buscarPorQuery(objModule: any, query: any): Observable<any> {
+    return this.afs.collection<any>(objModule.name, query).valueChanges();
+  }
+
+  downloadFile(path: string): Observable<string | null> {
+    const ref = this.storage.ref(path);
+    return ref.getDownloadURL();
   }
 }
