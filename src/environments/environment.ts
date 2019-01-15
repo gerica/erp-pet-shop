@@ -9,6 +9,7 @@ export const environment = {
   moduleCliente: { name: 'cliente' },
   moduleEspecie: { name: 'especie' },
   moduleRaca: { name: 'raca' },
+  modulePet: { name: 'pet' },
   //
   moduleTipoProjeto: { name: 'TipoProjeto' },
   moduleProjetoDispendio: { name: 'ProjetoDispendio' },
