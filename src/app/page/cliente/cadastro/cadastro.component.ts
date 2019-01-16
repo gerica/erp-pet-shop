@@ -16,7 +16,6 @@ import {
   MSG101,
 } from 'src/app/page/shared/utils/app.messages';
 import { Subscription, Observable, concat, forkJoin, of } from 'rxjs';
-import { SepinService } from 'src/app/page/shared/utils/service/sepin.service';
 import { environment } from 'src/environments/environment';
 import * as moment from 'moment';
 import { NgForm, NgModel } from '@angular/forms';
@@ -31,14 +30,10 @@ import {
 } from 'rxjs/operators';
 import {
   MatDialog,
-  MatStepper,
   MatTableDataSource,
   MatPaginator,
   MatSort,
 } from '@angular/material';
-import { DialogRecursoHumanoComponent } from '../../dispendio/recurso-humano/dialog.recurso.humano.component';
-import { DialogEquipamentoSoftwareComponent } from '../../dispendio/equipamento-software/dialog.equipamento.software.component';
-import { DialogPropriedadeIntelectualComponent } from '../../propriedadeIntelectual/dialog.propriedade.intelectual.component';
 import { paths } from '../../app-paths';
 
 const MODULE_CLIENTE = environment.moduleCliente;
