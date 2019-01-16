@@ -22,6 +22,17 @@ export class PageComponent implements OnInit {
       router: `/${paths.page}/${paths.cliente}`,
     },
     {
+      icon: 'store',
+      name: 'Estoque',
+      showChilds: false,
+      childs: [
+        {
+          name: 'Ração',
+          router: `/${paths.page}/${paths.estoque}/${paths.racao}`,
+        },
+      ],
+    },
+    {
       icon: 'account_balance',
       name: 'Admnistrativo',
       showChilds: false,

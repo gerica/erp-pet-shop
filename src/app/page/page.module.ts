@@ -8,6 +8,7 @@ import { DashboardModule } from './dashboard/dashboard.module';
 import { SharedModule } from './shared/shared.module';
 import { NotFoundComponent } from './notFound/not.found.component';
 import { ClienteModule } from './cliente/cliente.module';
+import { EstoqueModule } from './estoque/estoque.module';
 
 @NgModule({
   declarations: [PageComponent, DeleteDialogComponent, NotFoundComponent],
@@ -19,6 +20,7 @@ import { ClienteModule } from './cliente/cliente.module';
     AreaAplicacaoModule,
     InstituicaoModule,
     DashboardModule,
+    EstoqueModule,
   ],
   exports: [DeleteDialogComponent],
   providers: [],

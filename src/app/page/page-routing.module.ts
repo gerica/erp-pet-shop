@@ -6,6 +6,7 @@ import { DashboardRoutes } from './dashboard/dashboard-routing.module';
 import { PageComponent } from './page.component';
 import { paths } from './app-paths';
 import { ClienteRoutes } from './cliente/cliente-routing.module';
+import { EstoqueRoutes } from './estoque/estoque-routing.module';
 
 export const PageRoutes: Route[] = [
   {
@@ -14,9 +15,10 @@ export const PageRoutes: Route[] = [
     children: [
       ...ClienteRoutes,
       ...FormacaoRoutes,
-      ...AreaAplicacaoRoutes,      
+      ...AreaAplicacaoRoutes,
       ...InstituicaoRoutes,
       ...DashboardRoutes,
+      ...EstoqueRoutes,
     ],
   },
 ];

@@ -10,22 +10,15 @@ export const environment = {
   moduleEspecie: { name: 'especie' },
   moduleRaca: { name: 'raca' },
   modulePet: { name: 'pet' },
+  moduleLinha: { name: 'linha' },
+  modulePorte: { name: 'porte' },
+  moduleIdadePet: { name: 'idade-pet' },
   //
-  moduleTipoProjeto: { name: 'TipoProjeto' },
-  moduleProjetoDispendio: { name: 'ProjetoDispendio' },
+
   moduleFormacao: { name: 'Formacao', id: 'CDFormacao' },
   moduleAreaAplicacao: { name: 'AreaAplicacao' },
   moduleInstituicao: { name: 'Instituicao' },
-  moduleRecursoHumano: { name: 'DispendioRecursosHumano' },
-  moduleEquipamentoSoftware: { name: 'DispendioEquipamentoSoftware' },
-  moduleEstrangeiro: { name: 'Estrangeiro' },
-  moduleTipoApropriacao: { name: 'TipoApropriacao' },
-  moduleTipoDispendio: { name: 'TipoDispendio', id: 'CDTipoDispendio' },
-  moduleEscolaridade: { name: 'Escolaridade', id: 'CDEscolaridade' },
-  modulePropriedadeIntelectual: { name: 'PropriedadeIntelectual' },
-  moduleProjetoPropriedadeIntelectual: {
-    name: 'ProjetoPropriedadeIntelectual',
-  },
+
   isDevelope: true,
   firebase: {
     apiKey: 'AIzaSyAW7jFSM6aWo48-Y4wBW9R6YvjkV5WjTsQ',
